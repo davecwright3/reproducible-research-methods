@@ -52,7 +52,7 @@ Reproducible Research License [(RRL)](https://planets.ucf.edu/resources/reproduc
 - Write down what you're working on, problems you've solved, input parameters for simulations you're running, links to resources you've used, etc.
 
 ## Example lab notebook entry
-```{.text}
+```{.txt}
 * [2022-05-12 Thu 17:02] Making new exo root image :exo:
 :LOGBOOK:
 CLOCK: [2022-05-12 Thu 18:02]--[2022-05-12 Thu 19:02] =>  1:00
