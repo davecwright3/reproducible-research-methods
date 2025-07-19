@@ -198,7 +198,7 @@ conda create -n my-locked-env --file conda-linux-64.lock
 ![](figs/pixi.webp){fig-align="center"}
 
 
-## Reproducible environments without containers (cont.) {.smaller} {.scrollable}
+## Reproducible environments without containers (cont.) {.smaller .scrollable}
 
 - Pixi environments (and more) are configured through the standard `pyproject.toml` configuration file, with support for PyPI and conda-forge
 
