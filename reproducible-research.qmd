@@ -164,6 +164,102 @@ Reproducible Research License [(RRL)](https://planets.ucf.edu/resources/reproduc
 - We'll look at container and non-container solutions
 
 ## Reproducible environments without containers {.smaller}
+- The most basic step towards a reproducible environment is to create a *virtual environment*
+```{.bash}
+python -m venv my-venv
+source my-venv/bin/activate
+```
+![](figs/python-virtual-envs.webp){fig-align="center"}
+
+## Reproducible environments without containers (cont.) {.smaller}
+- Once you're in the virtual environment, you can use `pip` as usual
+```{.bash}
+pip install numpy scipy matplotlib
+```
+- We can *freeze* and *export* our environment to a requirements file
+
+```{.bash}
+pip freeze > requirements.txt
+cat requirements.txt
+```
+
+```{.txt}
+contourpy==1.3.3
+cycler==0.12.1
+fonttools==4.59.0
+kiwisolver==1.4.8
+matplotlib==3.10.3
+numpy==2.3.2
+packaging==25.0
+pillow==11.3.0
+pyparsing==3.2.3
+python-dateutil==2.9.0.post0
+scipy==1.16.1
+six==1.17.0
+```
+
+## Reproducible environments without containers (cont.) {.smaller .scrollable}
+- Using a `requirements.txt` file, we can recreate an environment
+```{.bash}
+python -m venv my-new-venv
+source my-new-venv/bin/activate
+pip install -r requirements.txt
+```
+- Now, I can run `pip list` in both environments to verify that we have the same packages installed.
+
+:::: {.columns}
+::: {.column width="50%"}
+```{.bash}
+source my-venv/bin/activate
+pip list
+```
+
+```{.txt}
+Package         Version
+--------------- -----------
+contourpy       1.3.3
+cycler          0.12.1
+fonttools       4.59.0
+kiwisolver      1.4.8
+matplotlib      3.10.3
+numpy           2.3.2
+packaging       25.0
+pillow          11.3.0
+pip             24.3.1
+pyparsing       3.2.3
+python-dateutil 2.9.0.post0
+scipy           1.16.1
+six             1.17.0
+```
+:::
+
+::: {.column width="50%"}
+```{.bash}
+source my-new-venv/bin/activate
+pip list
+```
+
+```{.txt}
+Package         Version
+--------------- -----------
+contourpy       1.3.3
+cycler          0.12.1
+fonttools       4.59.0
+kiwisolver      1.4.8
+matplotlib      3.10.3
+numpy           2.3.2
+packaging       25.0
+pillow          11.3.0
+pip             24.3.1
+pyparsing       3.2.3
+python-dateutil 2.9.0.post0
+scipy           1.16.1
+six             1.17.0
+```
+:::
+::::
+
+## Reproducible environments without containers (cont.) {.smaller}
 - Most researchers using Python are using Conda
 - Conda environments by themselves are not exactly reproducible!
 - We need *exact* versions, platforms, etc.
